@@ -1,0 +1,201 @@
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  May 31 23:08 2023
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/inter.vpd' was opened successfully.
+                   0 y =     x, x =     x
+                   5 y =     0, x =     x
+                  15 y =     x, x =     x
+$finish called from file "fir.sv", line 58.
+$finish at simulation time              1000016
+Simulation complete, time is 1000016.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  May 31 23:09 2023
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/inter.vpd' was opened successfully.
+                   0 y =     x, x =     x
+                   5 y =     0, x =     x
+                  15 y =     x, x =     x
+$finish called from file "fir.sv", line 58.
+$finish at simulation time              1000016
+Simulation complete, time is 1000016.
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 1000016
+CPU Time:      0.150 seconds;       Data structure size:   0.0Mb
+Wed May 31 23:11:58 2023
+
+Warning-[DEBUG_DEP] Option will be deprecated
+  The option '-debug' will be deprecated in a future release.  Please use 
+  '-debug_acc+pp+f+dmptf -debug_region+cell+encrypt' instead.
+
+                         Chronologic VCS (TM)
+         Version T-2022.06_Full64 -- Wed May 31 23:11:59 2023
+
+                    Copyright (c) 1991 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file 'fir.sv'
+Top Level Modules:
+       fir_test
+No TimeScale specified
+
+Warning-[SIOB] Select index out of bounds
+fir.sv, 50
+"fir_test.dut.x[15]"
+  The select index is out of declared bounds : [9:0].
+  In module : fir_test.
+
+Starting vcs inline pass...
+
+2 modules and 0 UDP read.
+	However, due to incremental compilation, no re-compilation is necessary.
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+ld -shared  -Bsymbolic   -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o 
+rm -f _cuarc0.so
+if [ -x ../simv ]; then chmod a-x ../simv; fi
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib -L/afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib  -Wl,-rpath-link=./     _12508_archive_1.so _prev_archive_1.so _cuarc0.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o           -lnuma -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+CPU time: .241 seconds to compile + .332 seconds to elab + .180 seconds to link
+Finished rebuilding the design.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  May 31 23:12 2023
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/inter.vpd' was opened successfully.
+                   0 y =     x, x =     x
+                   5 y =     0, x =     x
+                  15 y =     x, x =     x
+$finish called from file "fir.sv", line 59.
+$finish at simulation time              1000016
+Simulation complete, time is 1000016.
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 1000016
+CPU Time:      0.150 seconds;       Data structure size:   0.0Mb
+Wed May 31 23:13:22 2023
+
+Warning-[DEBUG_DEP] Option will be deprecated
+  The option '-debug' will be deprecated in a future release.  Please use 
+  '-debug_acc+pp+f+dmptf -debug_region+cell+encrypt' instead.
+
+                         Chronologic VCS (TM)
+         Version T-2022.06_Full64 -- Wed May 31 23:13:23 2023
+
+                    Copyright (c) 1991 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file 'fir.sv'
+Top Level Modules:
+       fir_test
+No TimeScale specified
+Starting vcs inline pass...
+
+2 modules and 0 UDP read.
+	However, due to incremental compilation, no re-compilation is necessary.
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+ld -shared  -Bsymbolic   -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o 
+rm -f _cuarc0.so
+if [ -x ../simv ]; then chmod a-x ../simv; fi
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib -L/afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib  -Wl,-rpath-link=./     _14574_archive_1.so _prev_archive_1.so _cuarc0.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o           -lnuma -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+CPU time: .242 seconds to compile + .337 seconds to elab + .175 seconds to link
+Finished rebuilding the design.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  May 31 23:13 2023
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/inter.vpd' was opened successfully.
+                   0 y =     x, x =     x
+                   5 y =     0, x =     0
+                  15 y =     x, x =     x
+                  25 y =     x, x =    10
+$finish called from file "fir.sv", line 59.
+$finish at simulation time              1000016
+Simulation complete, time is 1000016.
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 1000016
+CPU Time:      0.140 seconds;       Data structure size:   0.0Mb
+Wed May 31 23:23:02 2023
+
+Warning-[DEBUG_DEP] Option will be deprecated
+  The option '-debug' will be deprecated in a future release.  Please use 
+  '-debug_acc+pp+f+dmptf -debug_region+cell+encrypt' instead.
+
+                         Chronologic VCS (TM)
+         Version T-2022.06_Full64 -- Wed May 31 23:23:08 2023
+
+                    Copyright (c) 1991 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file 'fir.sv'
+Top Level Modules:
+       fir_test
+No TimeScale specified
+Starting vcs inline pass...
+
+2 modules and 0 UDP read.
+	However, due to incremental compilation, no re-compilation is necessary.
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+ld -shared  -Bsymbolic   -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o 
+rm -f _cuarc0.so
+if [ -x ../simv ]; then chmod a-x ../simv; fi
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib -L/afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib  -Wl,-rpath-link=./     _23197_archive_1.so _prev_archive_1.so _cuarc0.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o           -lnuma -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+CPU time: .228 seconds to compile + .345 seconds to elab + .181 seconds to link
+Finished rebuilding the design.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  May 31 23:23 2023
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/inter.vpd' was opened successfully.
+                   0 y =     x, x =     x
+                   5 y =     0, x =     0
+                  15 y =     x, x =     0
+                 105 y =     x, x =     x
+                 115 y =     x, x =    10
+$finish called from file "fir.sv", line 65.
+$finish at simulation time              1000016
+Simulation complete, time is 1000016.
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 1000016
+CPU Time:      0.150 seconds;       Data structure size:   0.0Mb
+Wed May 31 23:27:01 2023
