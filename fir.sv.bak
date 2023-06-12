@@ -13,13 +13,11 @@ module fir // finite impulse response filter for 10 samples
 
     always_ff @(posedge clock) begin
         if (reset) begin
-            x <= '{default:0};
+            x <= {default: 0};
             y <= 0;
         end
         else begin
-            x[n-1:1] <= x[n-2:0];
-			x[0] <= xin;
-			y <= y_comb;
+            x[n-1:0] <= {x[n-2:0], xin};
             // y <= y + x[i] * taps[i];
         end
         // y <= y_comb;

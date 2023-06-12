@@ -1,3 +1,14 @@
+# vcs
 csrc
 simv.daidir
 simv
+# -debug
+DVEfiles
+.restartSimSession*
+.synopsys_dve_rebuild.tcl
+inter.vpd
+ucli.key
+# quartus
+db
+output_files
+*.qsf
