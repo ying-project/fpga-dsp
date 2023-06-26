@@ -12,3 +12,8 @@ ucli.key
 db
 output_files
 *.qsf
+*.qws
+*.bak
+*.vpd
+incremental_db
+simulation

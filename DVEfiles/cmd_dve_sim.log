@@ -1,4 +1,3 @@
-ucliGUI::start /afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/simv -ucligui 
 set ucliGUI::state
 set ucliGUI::state
 ucliCore::getToolPID
@@ -6,103 +5,34 @@ synopsys::env hasTB
 trigger_hier_stack_context_switch 0
 synUtils::setDVEInitPhase 1
 synopsys::dump -type VPD -file /afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/inter.vpd -locking
-synopsys::dump -autoflush on -fid VPD4
-set ::dve_fid VPD4
+synopsys::dump -autoflush on -fid VPD0
+set ::dve_fid VPD0
 synUtils::setDVEInitPhase 0
 ucliCore::getToolPID
-synUtils::sendTool -active _icl_setToolSocket /tmp/smlnpIRBnnZ
-synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.zhiyingm.23457}
-synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.zhiyingm.23457}
+synUtils::sendTool -active _icl_setToolSocket /tmp/smlnppZOlGU
+synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.zhiyingm.10168}
+synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.zhiyingm.10168}
 config endofsim noexit
 config onfail enable all
 config syscaddplainmembers
 config syscaddsourcenames
 config syscaddstructtypes
 synopsys::listing -disable
-# Begin_DVE_Session_Save_Info
-# DVE restart session
-# Saved on Wed May 31 23:23:02 2023
-# Designs open: 1
-#   Sim: /afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/simv
-# Toplevel windows open: 2
-# 	TopLevel.1
-# 	TopLevel.3
-#   Source.1: fir_test
-#   Wave.2: 11 signals
-#   Group count = 2
-#   Group Group1 signal count = 6
-#   Group Group2 signal count = 11
-# End_DVE_Session_Save_Info
-# DVE version: T-2022.06_Full64
-# DVE build date: May 31 2022 20:53:03
-#<Session mode="Restart" path=".restartSimSession.tcl" type="Debug">
-# Application preferences
-#<WindowLayout>
-# DVE top-level session
-# Create and position top-level window: TopLevel.1
-set TopLevel.1 TopLevel.1
-# Docked window settings
-set HSPane.1 HSPane.1
-set Hier.1 Hier.1
-set DLPane.1 DLPane.1
-set Data.1 Data.1
-set Console.1 Console.1
-# MDI window settings
-set Source.1 Source.1
-# End MDI window settings
-# Create and position top-level window: TopLevel.3
-set TopLevel.3 TopLevel.3
-# Docked window settings
-# MDI window settings
-set Wave.2 Wave.2
-# End MDI window settings
-#</WindowLayout>
-#<Database>
-#</Database>
-# DVE Global setting session:
-# Global: Breakpoints
-# Global: Bus
-# Global: Expressions
-# Global: Signal Time Shift
-# Global: Signal Compare
-# Global: Signal Groups
-synopsys::dump -add {fir_test} -scope "." -depth 1 -fid VPD4
-synopsys::dump -add {fir_test.dut} -scope "." -depth 1 -fid VPD4
-set _session_group_7 Group1
-set Group1 "$_session_group_7"
-set _session_group_8 Group2
-set Group2 "$_session_group_8"
-# Global: Highlighting
-# Global: Stack
-# Post database loading setting...
-# Save global setting...
-# Wave/List view global setting
-# Close all empty TopLevel windows
-foreach __top [gui_ekki_get_window_ids -type TopLevel] {     if { [llength [gui_ekki_get_window_ids -parent $__top]] == 0} {         gui_close_window -window $__top     } }
-# DVE View/pane content session:
-# Hier 'Hier.1'
-catch {gui_list_expand -id ${Hier.1} fir_test}
-catch {gui_list_select -id ${Hier.1} {fir_test.dut}}
-# Data 'Data.1'
-catch { gui_list_select -id ${Data.1} {fir_test.dut.clock fir_test.dut.reset fir_test.dut.i fir_test.dut.j fir_test.dut.n fir_test.dut.w fir_test.dut.y_comb fir_test.dut.x fir_test.dut.y fir_test.dut.xin fir_test.dut.taps }}
-# Source 'Source.1'
-# View 'Wave.2'
-set groupExD [gui_get_pref_value -category Wave -key exclusiveSG]
-set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
-set origGroupCreationState [gui_list_create_group_when_add -wave]
-synopsys::dump -add {fir_test.dut.taps fir_test.dut.x } -aggregates  -fid VPD4
-if {$origGroupCreationState} { 	gui_list_create_group_when_add -wave -enable }
-if { $groupExD } {  gui_msg_report -code DVWW028 }
-# Restore toplevel window zorder
-# The toplevel window could be closed if it has no view/pane
-if {[gui_exist_window -window ${TopLevel.1}]} { 	gui_set_active_window -window ${TopLevel.1} 	gui_set_active_window -window ${Source.1} 	gui_set_active_window -window ${DLPane.1} }
-if {[gui_exist_window -window ${TopLevel.3}]} { 	gui_set_active_window -window ${TopLevel.3} 	gui_set_active_window -window ${Wave.2} }
-#</Session>
+synopsys::dump -add {fir_test.dut.clock fir_test.dut.i fir_test.dut.j fir_test.dut.n fir_test.dut.reset fir_test.dut.taps fir_test.dut.w fir_test.dut.x fir_test.dut.xin fir_test.dut.y fir_test.dut.y_comb } -aggregates  -fid VPD0
 synopsys::run
 set ucliGUI::state
 set ucliGUI::state
 set ucliGUI::state
 set ucliGUI::state
+tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/dve/schematic.tcl
+tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/schematic/base.tcl
+tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/schematic/enable.tcl
+tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/schematic/netlist.tcl
+tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/schematic/method.tcl
+tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/strokes/stroke_defaults.tcl
+tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/dialogs/ObjectListInfo.tcl
+tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/schematic/DialogPathSchematicFanInOut.tcl
+tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/dve/driversloads.tcl
 if [catch {gui_sim_terminate}] {gui_sim_terminate -kill}
 synopsys::finish
 set ucliGUI::state

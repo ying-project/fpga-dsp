@@ -1,14 +1,14 @@
 # Begin_DVE_Session_Save_Info
 # DVE full session
-# Saved on Wed May 31 23:27:01 2023
+# Saved on Mon Jun 12 16:44:58 2023
 # Designs open: 1
 #   Sim: /afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/simv
 # Toplevel windows open: 1
 # 	TopLevel.1
 #   Source.1: fir_test
-#   Group count = 2
-#   Group Group1 signal count = 6
-#   Group Group2 signal count = 11
+#   Schematic.1: fir_test.dut
+#   Group count = 1
+#   Group Group1 signal count = 11
 # End_DVE_Session_Save_Info
 
 # DVE version: T-2022.06_Full64
@@ -67,7 +67,7 @@ if {![gui_exist_window -window TopLevel.1]} {
 } else { 
     set TopLevel.1 TopLevel.1
 }
-gui_show_window -window ${TopLevel.1} -show_state normal -rect {{-1 22} {1494 847}}
+gui_show_window -window ${TopLevel.1} -show_state normal -rect {{-1 44} {1493 868}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -114,23 +114,23 @@ gui_show_toolbar -toolbar {Testbench}
 # End ToolBar settings
 
 # Docked window settings
-set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 139]
+set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 138]
 catch { set Hier.1 [gui_share_window -id ${HSPane.1} -type Hier] }
-gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 139
+gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 138
 gui_set_window_pref_key -window ${HSPane.1} -key dock_height -value_type integer -value -1
 gui_set_window_pref_key -window ${HSPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 138} {height 378} {dock_state left} {dock_on_new_line true} {child_hier_colhier 140} {child_hier_coltype 100} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
-set DLPane.1 [gui_create_window -type DLPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 436]
+gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 137} {height 378} {dock_state left} {dock_on_new_line true} {child_hier_colhier 140} {child_hier_coltype 100} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
+set DLPane.1 [gui_create_window -type DLPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 435]
 catch { set Data.1 [gui_share_window -id ${DLPane.1} -type Data] }
-gui_set_window_pref_key -window ${DLPane.1} -key dock_width -value_type integer -value 436
+gui_set_window_pref_key -window ${DLPane.1} -key dock_width -value_type integer -value 435
 gui_set_window_pref_key -window ${DLPane.1} -key dock_height -value_type integer -value 378
 gui_set_window_pref_key -window ${DLPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${DLPane.1} {{left 0} {top 0} {width 435} {height 378} {dock_state left} {dock_on_new_line true} {child_data_colvariable 199} {child_data_colvalue 159} {child_data_coltype 102} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
-set Console.1 [gui_create_window -type Console -parent ${TopLevel.1} -dock_state bottom -dock_on_new_line true -dock_extent 334]
+gui_update_layout -id ${DLPane.1} {{left 0} {top 0} {width 434} {height 378} {dock_state left} {dock_on_new_line true} {child_data_colvariable 199} {child_data_colvalue 159} {child_data_coltype 102} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
+set Console.1 [gui_create_window -type Console -parent ${TopLevel.1} -dock_state bottom -dock_on_new_line true -dock_extent 333]
 gui_set_window_pref_key -window ${Console.1} -key dock_width -value_type integer -value 1452
-gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 334
+gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 333
 gui_set_window_pref_key -window ${Console.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1495} {height 333} {dock_state bottom} {dock_on_new_line true}}
+gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1494} {height 332} {dock_state bottom} {dock_on_new_line true}}
 #### Start - Readjusting docked view's offset / size
 set dockAreaList { top left right bottom }
 foreach dockArea $dockAreaList {
@@ -155,6 +155,14 @@ gui_sync_global -id ${TopLevel.1} -option true
 set Source.1 [gui_create_window -type {Source}  -parent ${TopLevel.1}]
 gui_show_window -window ${Source.1} -show_state maximized
 gui_update_layout -id ${Source.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false}}
+gui_use_schematics
+set Schematic.1 [gui_create_window -type {Schematic}  -parent ${TopLevel.1} -defer_create_taskbar_icon]
+set setting [::Misc::Setting::create -array DveSchematicSettings]
+Misc::init_window $setting ${Schematic.1}
+::Misc::exec_method -window ${Schematic.1} -method captionCmd
+gui_add_icon_to_taskbar -window ${Schematic.1}
+gui_show_window -window ${Schematic.1} -show_state maximized
+gui_update_layout -id ${Schematic.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false}}
 
 # End MDI window settings
 
@@ -174,11 +182,11 @@ gui_update_statusbar_target_frame ${TopLevel.1}
 # DVE Open design session: 
 
 if { [llength [lindex [gui_get_db -design Sim] 0]] == 0 } {
-gui_set_env SIMSETUP::SIMARGS {{-ucligui }}
-gui_set_env SIMSETUP::SIMEXE {/afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/simv}
+gui_set_env SIMSETUP::SIMARGS {{}}
+gui_set_env SIMSETUP::SIMEXE {./simv}
 gui_set_env SIMSETUP::ALLOW_POLL {0}
 if { ![gui_is_db_opened -db {/afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/simv}] } {
-gui_sim_run Ucli -exe simv -args {-ucligui } -dir /afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp -nosource
+gui_sim_run Ucli -exe simv -args { -ucligui} -dir /afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp -nosource
 }
 }
 if { ![gui_sim_state -check active] } {error "Simulator did not start correctly" error}
@@ -200,21 +208,14 @@ gui_set_time_units 1s
 # Global: Signal Compare
 
 # Global: Signal Groups
-gui_load_child_values {fir_test}
 gui_load_child_values {fir_test.dut}
 
 
-set _session_group_9 Group1
-gui_sg_create "$_session_group_9"
-set Group1 "$_session_group_9"
+set _session_group_1 Group1
+gui_sg_create "$_session_group_1"
+set Group1 "$_session_group_1"
 
-gui_sg_addsignal -group "$_session_group_9" { fir_test.clock fir_test.reset fir_test.xin fir_test.y fir_test.i fir_test.taps }
-
-set _session_group_10 Group2
-gui_sg_create "$_session_group_10"
-set Group2 "$_session_group_10"
-
-gui_sg_addsignal -group "$_session_group_10" { fir_test.dut.clock fir_test.dut.reset fir_test.dut.xin fir_test.dut.y fir_test.dut.taps fir_test.dut.i fir_test.dut.j fir_test.dut.y_comb fir_test.dut.x fir_test.dut.n fir_test.dut.w }
+gui_sg_addsignal -group "$_session_group_1" { fir_test.dut.clock fir_test.dut.reset fir_test.dut.xin fir_test.dut.y fir_test.dut.taps fir_test.dut.y_comb fir_test.dut.i fir_test.dut.j fir_test.dut.x fir_test.dut.n fir_test.dut.w }
 gui_set_radix -radix {decimal} -signals {Sim:fir_test.dut.n}
 gui_set_radix -radix {twosComplement} -signals {Sim:fir_test.dut.n}
 gui_set_radix -radix {decimal} -signals {Sim:fir_test.dut.w}
@@ -228,7 +229,7 @@ gui_change_stack_mode -mode list
 # Post database loading setting...
 
 # Restore C1 time
-gui_set_time -C1_only 15
+gui_set_time -C1_only 9
 
 
 
@@ -263,7 +264,7 @@ gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linka
 gui_list_set_filter -id ${Data.1} -text {*}
 gui_list_show_data -id ${Data.1} {fir_test.dut}
 gui_show_window -window ${Data.1}
-catch { gui_list_select -id ${Data.1} {fir_test.dut.clock fir_test.dut.reset fir_test.dut.i fir_test.dut.j fir_test.dut.n fir_test.dut.w fir_test.dut.y_comb fir_test.dut.x fir_test.dut.y fir_test.dut.xin fir_test.dut.taps }}
+catch { gui_list_select -id ${Data.1} {fir_test.dut.clock fir_test.dut.reset fir_test.dut.xin fir_test.dut.y fir_test.dut.taps fir_test.dut.y_comb fir_test.dut.i fir_test.dut.j fir_test.dut.x fir_test.dut.n fir_test.dut.w }}
 gui_view_scroll -id ${Data.1} -vertical -set 0
 gui_view_scroll -id ${Data.1} -horizontal -set 0
 gui_view_scroll -id ${Hier.1} -vertical -set 0
@@ -275,12 +276,21 @@ gui_set_env TOGGLE::VALUEANNOTATE 0
 gui_open_source -id ${Source.1}  -replace -active fir_test /afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/fir.sv
 gui_view_scroll -id ${Source.1} -vertical -set 80
 gui_src_set_reusable -id ${Source.1}
+
+# View 'Schematic.1'
+gui_use_schematics
+
+# Create schematic window 'Schematic.1'
+gui_sch_show -window ${Schematic.1} -name fir_test.dut
+gui_show_pin_value_annotate [gui_window_hier_name -window ${Schematic.1}]
+gui_zoom -window ${Schematic.1} -rect { {-20746 -28887} {72489 4950} }
+
+
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane
 if {[gui_exist_window -window ${TopLevel.1}]} {
 	gui_set_active_window -window ${TopLevel.1}
-	gui_set_active_window -window ${Source.1}
-	gui_set_active_window -window ${DLPane.1}
+	gui_set_active_window -window ${Schematic.1}
 }
 #</Session>
 

@@ -1,48 +1,36 @@
 `default_nettype none
 
-module fir // finite impulse response filter for 10 samples
- #(parameter n = 10,
-             w = 16)
-  (input  logic clock, reset,
-   input  logic [w-1:0] xin,
-   input  logic [w-1:0] taps[n-1:0],
-   output logic [w-1:0] y);
-
-    logic [w-1:0] x[n-1:0];
-    logic [w-1:0] y_comb[n:0];
-
-    always_ff @(posedge clock) begin
-        if (reset) begin
-            x <= '{default:0};
-            y <= 0;
-        end
-        else begin
-            x[n-1:1] <= x[n-2:0];
-			x[0] <= xin;
-			y <= y_comb[n];
-        end
-    end
-
-    always_comb begin
-        y_comb[0] = 0;
-        for (int i = 0; i < n; i = i+1)
-            y_comb[i+1] = y_comb[i] + x[i] * taps[i];
-    end
-
-endmodule: fir
-
-/*
 module fir_test();
     logic clock, reset;
     logic [15:0] xin;
     logic [15:0] taps[9:0];
     logic [15:0] y;
+    logic done;
 
     fir dut (.*);
 
     initial begin
         clock = 0;
         forever #5 clock = ~clock;
+    end
+
+    initial begin
+        $display("### INFO: RTL Simulation of FIR Filter.");
+        fid_mat_inp = $fopen("input.mat", "r");
+        fid_mat_oup = $fopen("output.mat", "r");
+        if ((fid_mat_inp == `NULL)||(fid_mat_oup == `NULL)) begin
+            $display("data_file handle was NULL");
+            $finish;
+        end
+        if (done) begin
+            $fclose(fid_mat_inp); 
+	        $fclose(fid_mat_oup);
+            if (error_count>0)
+                $display("### INFO: Testcase FAILED");
+            else
+                $display("### INFO: Testcase PASSED with %d samples", nr_of_samples);
+            $finish;
+        end
     end
 
     initial begin
@@ -60,8 +48,6 @@ module fir_test();
         taps[7] <= 2;
         taps[8] <= 2;
         taps[9] <= 2;
-        // for (int i = 0; i < 10; i = i+1)
-        //     taps[i] <= i;
         xin <= 10;
         @(posedge clock);
         xin <= 9;
@@ -85,4 +71,3 @@ module fir_test();
         #1 $finish;
     end
 endmodule: fir_test
-*/
