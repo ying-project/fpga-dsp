@@ -2,72 +2,81 @@
 
 module fir_test();
     logic clock, reset;
-    logic [15:0] xin;
+    logic [15:0] xin, data_in, data_out;
     logic [15:0] taps[9:0];
     logic [15:0] y;
     logic done;
 
+    assign xin = data_in;
+
     fir dut (.*);
+
+    always_comb begin
+        taps[0] = 16'hF85;
+        taps[1] = 16'h79E;
+        taps[2] = 16'h8D8;
+        taps[3] = 16'h9C0;
+        taps[4] = 16'hA3C;
+        taps[5] = 16'hA3C;
+        taps[6] = 16'h9C0;
+        taps[7] = 16'h8D8;
+        taps[8] = 16'h79E;
+        taps[9] = 16'hF85;
+    end
 
     initial begin
         clock = 0;
         forever #5 clock = ~clock;
     end
 
+    int mat_input, mat_output, status_input, status_output;
+    int sample_num, error_num;
+    logic done;
+
     initial begin
         $display("### INFO: RTL Simulation of FIR Filter.");
-        fid_mat_inp = $fopen("input.mat", "r");
-        fid_mat_oup = $fopen("output.mat", "r");
-        if ((fid_mat_inp == `NULL)||(fid_mat_oup == `NULL)) begin
+        mat_input = $fopen("input.txt", "r");
+        //mat_taps = $fopen("taps.mat", "r");
+        mat_output = $fopen("output.txt", "r");
+        $display("mat_in: %h, mat_out: %h\n", mat_input, mat_output);
+        if ((!mat_input)||(!mat_output)) begin
             $display("data_file handle was NULL");
             $finish;
         end
-        if (done) begin
-            $fclose(fid_mat_inp); 
-	        $fclose(fid_mat_oup);
-            if (error_count>0)
-                $display("### INFO: Testcase FAILED");
-            else
-                $display("### INFO: Testcase PASSED with %d samples", nr_of_samples);
-            $finish;
+
+        reset <= 1'b1;
+        @(posedge clock);
+        reset <= 1'b0;
+    end
+
+    always @(posedge done) begin
+        $fclose(mat_input); 
+        //$fclose(mat_taps); 
+        $fclose(mat_output);
+        if (error_num > 0)
+            $display("### INFO: Testcase FAILED");
+        else
+            $display("### INFO: Testcase PASSED with %d samples", sample_num);
+        $finish;
+    end
+    
+    always @(posedge clock) begin 
+        status_input = $fscanf(mat_input,"%d\n", data_in);
+        status_output = $fscanf(mat_output,"%d\n", data_out);
+        //$display("data_in: %d, data_out: %d\n", data_in, data_out);
+        sample_num <= sample_num + 1;
+        
+        if ($feof(mat_input)) begin
+            done = 1'b1;
+            $display("done with data file");
         end
     end
 
-    initial begin
-        $monitor($time,, "y = %d, x = %d", dut.y, dut.x[0]);
-        reset <= 1;
-        @(posedge clock);
-        reset <= 0;
-        taps[0] <= 1;
-        taps[1] <= 1;
-        taps[2] <= 1;
-        taps[3] <= 1;
-        taps[4] <= 1;
-        taps[5] <= 2;
-        taps[6] <= 2;
-        taps[7] <= 2;
-        taps[8] <= 2;
-        taps[9] <= 2;
-        xin <= 10;
-        @(posedge clock);
-        xin <= 9;
-        @(posedge clock);
-        xin <= 8;
-        @(posedge clock);
-        xin <= 7;
-        @(posedge clock);
-        xin <= 6;
-        @(posedge clock);
-        xin <= 5;
-        @(posedge clock);
-        xin <= 4;
-        @(posedge clock);
-        xin <= 3;
-        @(posedge clock);
-        xin <= 2;
-        @(posedge clock);
-        xin <= 1;
-        @(posedge clock);
-        #1 $finish;
+    always @(negedge clock) begin
+        if (y != data_out) begin 
+            $error("### RTL = %d, MAT = %d", y, data_out);
+            error_num <= error_num + 1;
+        end
     end
+
 endmodule: fir_test

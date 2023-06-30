@@ -9,30 +9,23 @@ synopsys::dump -autoflush on -fid VPD0
 set ::dve_fid VPD0
 synUtils::setDVEInitPhase 0
 ucliCore::getToolPID
-synUtils::sendTool -active _icl_setToolSocket /tmp/smlnppZOlGU
-synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.zhiyingm.10168}
-synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.zhiyingm.10168}
+synUtils::sendTool -active _icl_setToolSocket /tmp/smlnp7xJxe7
+synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.zhiyingm.32493}
+synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.zhiyingm.32493}
 config endofsim noexit
 config onfail enable all
 config syscaddplainmembers
 config syscaddsourcenames
 config syscaddstructtypes
 synopsys::listing -disable
-synopsys::dump -add {fir_test.dut.clock fir_test.dut.i fir_test.dut.j fir_test.dut.n fir_test.dut.reset fir_test.dut.taps fir_test.dut.w fir_test.dut.x fir_test.dut.xin fir_test.dut.y fir_test.dut.y_comb } -aggregates  -fid VPD0
+ucliGUI::vpdAddHierarchy -scope fir_test -depth 1 -file /afs/andrew.cmu.edu/usr1/zhiyingm/private/18240/projects/fpga-dsp/inter.vpd; synopsys::dump -flush VPD0
+synopsys::dump -add {fir_test.clock fir_test.data_in fir_test.data_out fir_test.done fir_test.error_num fir_test.mat_input fir_test.mat_output fir_test.reset fir_test.sample_num fir_test.status_input fir_test.status_output fir_test.taps fir_test.xin fir_test.y } -aggregates  -fid VPD0
 synopsys::run
 set ucliGUI::state
 set ucliGUI::state
 set ucliGUI::state
 set ucliGUI::state
-tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/dve/schematic.tcl
-tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/schematic/base.tcl
-tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/schematic/enable.tcl
-tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/schematic/netlist.tcl
-tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/schematic/method.tcl
-tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/strokes/stroke_defaults.tcl
-tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/dialogs/ObjectListInfo.tcl
-tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/common/schematic/DialogPathSchematicFanInOut.tcl
-tcl_source /afs/ece.cmu.edu/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/auxx/gui/dve/driversloads.tcl
+ucliGUI::getSignalValues -scope fir_test -radix {hexadecimal } -list {{data_in[15:0]} }
 if [catch {gui_sim_terminate}] {gui_sim_terminate -kill}
 synopsys::finish
 set ucliGUI::state
