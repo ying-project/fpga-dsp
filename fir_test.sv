@@ -26,7 +26,7 @@ module fir_test();
 
     initial begin
         clock = 0;
-        forever #5 clock = ~clock;
+        forever #50 clock = ~clock;
     end
 
     int mat_input, mat_output, status_input, status_output;
