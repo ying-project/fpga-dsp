@@ -24,10 +24,13 @@ module fir // finite impulse response filter for 10 samples
     end
 
     always_comb begin
-        y_comb[0] = 0;
-        for (int i = 0; i < n; i = i+1)
-            y_comb[i+1] = y_comb[i] + (x[i] * taps[i]) >> 15;
-            //y_comb[1] = x[0] * 0f85;
+        y_comb[0] = 32'b0;
+        for (int i = 0; i < n; i = i+1) begin
+            if (x[i] >= 16'h8000) // if negative, take two's complement for computation
+                y_comb[i+1] = y_comb[i] - (((16'hffff - x[i] + 16'b1) * taps[i]) >> 15);
+            else
+                y_comb[i+1] = y_comb[i] + ((x[i] * taps[i]) >> 15);
+        end
     end
 
 endmodule: fir

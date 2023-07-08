@@ -63,7 +63,7 @@ module fir_test();
     always @(posedge clock) begin 
         status_input = $fscanf(mat_input,"%d\n", data_in);
         status_output = $fscanf(mat_output,"%d\n", data_out);
-        //$display("data_in: %d, data_out: %d\n", data_in, data_out);
+        $display("data_in: %d, data_out: %d\n", data_in, data_out);
         sample_num <= sample_num + 1;
         
         if ($feof(mat_input)) begin
@@ -74,7 +74,7 @@ module fir_test();
 
     always @(negedge clock) begin
         if (y != data_out) begin 
-            $error("### RTL = %d, MAT = %d", y, data_out);
+            //$error("### RTL = %d, MAT = %d", y, data_out);
             error_num <= error_num + 1;
         end
     end
