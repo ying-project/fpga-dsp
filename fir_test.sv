@@ -4,7 +4,7 @@ module fir_test();
     logic clock, reset;
     logic [15:0] xin, data_in, data_out;
     logic [15:0] taps[9:0];
-    logic [15:0] y;
+    logic [15:0] y, y_temp, y_expect;
     logic done;
 
     assign xin = data_in;
@@ -36,25 +36,23 @@ module fir_test();
     initial begin
         $display("### INFO: RTL Simulation of FIR Filter.");
         mat_input = $fopen("input.txt", "r");
-        //mat_taps = $fopen("taps.mat", "r");
         mat_output = $fopen("output.txt", "r");
-        $display("mat_in: %h, mat_out: %h\n", mat_input, mat_output);
         if ((!mat_input)||(!mat_output)) begin
             $display("data_file handle was NULL");
             $finish;
         end
 
         reset <= 1'b1;
+        y_temp <= 0;
         @(posedge clock);
         reset <= 1'b0;
     end
 
     always @(posedge done) begin
-        $fclose(mat_input); 
-        //$fclose(mat_taps); 
+        $fclose(mat_input);
         $fclose(mat_output);
         if (error_num > 0)
-            $display("### INFO: Testcase FAILED");
+            $display("### INFO: Testcase FAILED with %d errors", error_num);
         else
             $display("### INFO: Testcase PASSED with %d samples", sample_num);
         $finish;
@@ -63,8 +61,10 @@ module fir_test();
     always @(posedge clock) begin 
         status_input = $fscanf(mat_input,"%d\n", data_in);
         status_output = $fscanf(mat_output,"%d\n", data_out);
-        $display("data_in: %d, data_out: %d\n", data_in, data_out);
+        //$display("data_in: %d, data_out: %d\n", data_in, data_out);
         sample_num <= sample_num + 1;
+        y_temp <= data_out; // delay one clock cycle to account for filter module delay
+        y_expect <= y_temp;
         
         if ($feof(mat_input)) begin
             done = 1'b1;
@@ -73,8 +73,8 @@ module fir_test();
     end
 
     always @(negedge clock) begin
-        if (y != data_out) begin 
-            //$error("### RTL = %d, MAT = %d", y, data_out);
+        if ((y >= y_expect + 10 || y <= y_expect - 10) && (y_expect > 10 && y_expect < 16'hfff6)) begin // tolerance due to rounding errors
+            $error("### RTL = %d, MAT = %d", y, y_expect);
             error_num <= error_num + 1;
         end
     end

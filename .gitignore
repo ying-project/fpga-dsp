@@ -16,3 +16,5 @@ output_files
 *.bak
 incremental_db
 simulation
+# afs
+.__afs*
