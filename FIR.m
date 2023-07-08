@@ -1,4 +1,4 @@
-y = filter(Hd, x);
+y = filter(Hd, x); % filter generated from Filter Design App, see image in readme
 plot(t,x,t,y)
 xlim([0 0.1])
 
